@@ -1,12 +1,56 @@
 :root {
     --bg-color: white ;
     --txt-color: black;
-    --accent-color: red;
+    --accent-color: navy;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.pagetitle {
+    text-align: center;
+    background-color: var(--accent-color);
+    color: aliceblue;
+    font-size: 2.6em;
+
+}
+
+#sidebar {
+    position: fixed;
+    width: 25%;
+    height: 100%;
+    background-color: ;
+
+}
+
+#sidebar li {
+    color: ;
+    font-size: 1.2em; 
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.upper-sb {
+    color: black;
+}
+
+a, ul {
+    text-decoration: none;
+    list-style: none;
+    color: aliceblue;
+}
+
+
+
+.city {
+    background-color: grey;
+    color: aliceblue;
+    border-radius: 5px;
+    margin: 5%;
 }
 

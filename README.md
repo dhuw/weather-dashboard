@@ -4,7 +4,7 @@ This weather dashboard app utilizes openweathermapAPI in order to pull weather d
 
 ## Links
 - Deployed Page:
-<br /> *example url*
+<br /> https://dhuw.github.io/homework-6/
 - Repo:
 <br /> https://github.com/dhuw/homework-6
 

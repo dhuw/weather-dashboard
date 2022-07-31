@@ -1,3 +1,17 @@
+$(document).ready(function () {
+
+    //api key
+    const apiKey = '';
+
+
+
+
+
+
+})
+
+
+
 // JavaScript TODOs
 // 1. Add functionality to all buttons
 // 2. get connection to openWeatherMap API

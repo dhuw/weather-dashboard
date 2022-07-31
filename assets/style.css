@@ -1,7 +1,7 @@
 :root {
-    --bg-color: white ;
-    --txt-color: black;
-    --accent-color: navy;
+    --bg-color: rgb(236, 234, 234) ;
+    --txt-color: rgb(26, 24, 24);
+    --accent-color: deepskyblue;
 }
 
 * {
@@ -11,11 +11,11 @@
 }
 
 header {
-    background-color: blue;
+    background-color: var(--accent-color);
 }
 
 div.title {
-    color: white;
+    color: var(--bg-color);
     text-align: center;
 }
 
@@ -24,7 +24,7 @@ div.title h1 {
 }
 
 main.dashboard {
-    background-color: aquamarine;
+    background-color: var(--bg-color);
 }
 
 div.recent-searches {
@@ -40,13 +40,13 @@ div.city{
 }
 
 div.cityName {
-    background-color: blueviolet;
+    background-color: white;
     color: black;
 }
 
 div.currentWeather {
     margin-bottom: 20px;
-    background-color: crimson;
+    background-color: white;
 }
 
 div.currentWeather h2,
@@ -63,10 +63,18 @@ div.fiveDay p.card-title {
     font-weight: bold;
 }
 
+.card-title {
+    color: white;
+}
+
 .card {
     background-color: deepskyblue;
 }
 
 .text-muted {
     color: white !important;
+}
+
+#search-btn {
+    background-color: var(--accent-color);
 }

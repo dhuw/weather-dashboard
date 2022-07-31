@@ -10,47 +10,38 @@
     box-sizing: border-box;
 }
 
-.pagetitle {
+header {
+    background-color: blue;
+}
+
+div.title {
+    color: white;
     text-align: center;
-    background-color: var(--accent-color);
-    color: aliceblue;
-    font-size: 2.6em;
-
 }
 
-#sidebar {
-    position: fixed;
-    width: 25%;
-    height: 100%;
-    background-color: ;
-
+div.title h1 {
+    padding: 10px;
 }
 
-#sidebar li {
-    color: ;
-    font-size: 1.2em; 
-    padding: 5%;
-    text-align: center;
-    text-decoration: none;
-    
+main.dashboard {
+    background-color: aquamarine;
 }
 
-.upper-sb {
+div.recent-searches {
+    font-size: 1.2rem;
+}
+
+div.cityList {
+    margin-top: 20px;
+}
+
+div.city{
+    padding: 10px;
+}
+
+div.cityName {
+    background-color: blueviolet;
     color: black;
 }
 
-a, ul {
-    text-decoration: none;
-    list-style: none;
-    color: aliceblue;
-}
-
-
-
-.city {
-    background-color: grey;
-    color: aliceblue;
-    border-radius: 5px;
-    margin: 5%;
-}
 

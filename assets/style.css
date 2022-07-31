@@ -44,4 +44,29 @@ div.cityName {
     color: black;
 }
 
+div.currentWeather {
+    margin-bottom: 20px;
+    background-color: crimson;
+}
 
+div.currentWeather h2,
+div.currentWeather h3 {
+    font-size: 1.3rem;
+    margin: 10px;
+}
+
+span#uv-index {
+    color: white;
+}
+
+div.fiveDay p.card-title {
+    font-weight: bold;
+}
+
+.card {
+    background-color: deepskyblue;
+}
+
+.text-muted {
+    color: white !important;
+}

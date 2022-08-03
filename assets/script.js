@@ -79,8 +79,31 @@ $(document).ready(function () {
 
     //openweather search
     function weatherSearch(queryURL) {
-        
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function (response) {
+
+            //store current city into pastCities
+            let city = response.name;
+            let id = response.id;
+            //removing dupes
+            if (pastCities[0]) {
+                pastCities = $.grep(pastCities, funtion (storedCity) {
+                    return id !== storedCity.id;
+                })
+            }
+            pastCities.unshift({city, id});
+            storeCities();
+            displayCities(pastCities);
+        })
     }
+    
+    //display weather in cards
+    cityEl.text(response.name);
+    let formattedDate = moment.unix(response.dt).format('L');
+    dateEl.text(formattedDate);
+    let weatherIcon = response.weather[0].icon;
 
 
 })

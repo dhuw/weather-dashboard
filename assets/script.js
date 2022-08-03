@@ -46,6 +46,43 @@ $(document).ready(function () {
         localStorage.setItem('pastCities', JSON.stringify(pastCities));
     }
 
+    function buildURLFromInputs(city) {
+        return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;
+    }
+
+    //display last searched cities
+    function displayCities(pastCities) {
+        cityListEl.empty();
+        pastCities.splice(5);
+        let sortedCities = [...pastCities];
+        sortedCities.sort(compare);
+        sortedCities.forEach(function (location {
+            let cityDiv = $('<div>').addClass('col-12 city');
+            let cityBtn = $('<button>').addClass('btn btn-light city-btn').text(location.city);
+            cityDiv.append(cityBtn);
+            cityBtn.append(cityBtn);
+        }));
+    }
+
+    // uv index color function
+    function setIndexColor(uvi) {
+        if (uvi < 3) {
+            return 'green';
+        } else if (uvi >= 3 && uvi < 6) {
+            return 'yellow';
+        } else if (uvi >= 6 && uvi < 8) {
+            return 'orange';
+        } else if (uvi >= 8 && uvi < 11) {
+            return 'red'
+        } else return 'purple'
+    }
+
+    //openweather search
+    function weatherSearch(queryURL) {
+        
+    }
+
+
 })
 
 

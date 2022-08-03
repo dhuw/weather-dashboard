@@ -18,10 +18,33 @@ $(document).ready(function () {
     const cityInput = $('#city-input');
 
     //recent search btns
- 
+    let  pastCities = [];
+    
+    //function to sort cities
+    function compare(a, b) {
 
+        const cityA = a.city.toUpperCase();
+        const cityB = b.city.toUpperCase();
 
-
+        let comparison = 0;
+        if (cityA > cityB) {
+            comparison = 1;
+        } else if (cityA < cityB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+    //load pastCities into local
+    function loadCities() {
+        const storedCities = JSON.parse(localStorage.getItem('pastCities'));
+        if  (storedCities) {
+            pastCities = storedCities;
+        }
+    }
+    //store pastCities into local
+    function storedCities() {
+        localStorage.setItem('pastCities', JSON.stringify(pastCities));
+    }
 
 })
 

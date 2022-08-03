@@ -112,6 +112,11 @@ $(document).ready(function () {
 
     let lat = reponse.coord.lat;
     let lon = reponse.coord.lon;
+    let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+    $.ajax({
+        
+    })
+
 
 })
 

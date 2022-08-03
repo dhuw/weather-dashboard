@@ -107,8 +107,8 @@ $(document).ready(function () {
     weatherIconEl.attr('src', 'http://openweathermap.org/img/wn/${weatherIcon}.png').attr
     ('alt', response.weather[0].description);
     temperatureEl.html(((response.main.temp - 273.15) *1.8 + 32).toFixed(1));
-    humidityEl.html(response.main.humidity);
-    windEl.html((response.main.wind * 2.237).toFixed(1));
+    humidityEl.text(response.main.humidity);
+    windEl.text((response.wind.speed * 2.237).toFixed(1));
 
     let lat = reponse.coord.lat;
     let lon = reponse.coord.lon;

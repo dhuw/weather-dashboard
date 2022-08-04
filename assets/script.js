@@ -114,7 +114,32 @@ $(document).ready(function () {
     let lon = reponse.coord.lon;
     let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     $.ajax({
-        
+        url: queryURLAll,
+        method: 'GET'
+    }).then(function (response) {
+        let uvIndex = response.current.uvi;
+        let uvColor = setIndexColor
+        uvIndexEl.text(response.current.uvi);
+        uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`)
+        let fivDay = response.daily;
+
+        //five day dom 
+        for (let 1 = 0; i <= 5; i++) {
+            let currDay = fiveDay[i];
+            $(`div.day-${i} .card-title`).text(moment.unix(currDay.dt).format('L'));
+            $(`div.day-${i} .card-title`).attr(
+                'src',
+                `http://openweathermap.org/img/wn/${currDay.weather[0].icon}.png`
+            ).attr('alt', currDay.weather[0].description);
+            $(`div.day-${i} .fiveDay-temp`)
+
+
+
+        }
+
+
+
+
     })
 
 

@@ -20,6 +20,7 @@ This weather dashboard app utilizes openweathermapAPI in order to pull weather d
 - https://jqueryui.com/
 - https://getbootstrap.com/
 - https://openweathermap.org/
+- https://momentjs.com/
 
 ## Languages
 - HTML

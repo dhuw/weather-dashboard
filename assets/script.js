@@ -146,14 +146,40 @@ $(document).ready(function () {
     }
 
     //last searched city funbction
+    function displaylastSearchedCity() {
+        if (pastCities[0]) {
+            let queryURL = buildURLFromId(pastCities[0].id);
+            weatherSearch(queryURL);
+        } else { // if no past cities seattle will be searched by default
+            let queryURL = buildURLFromInputs("Seattle");
+            weatherSearch(queryURL);
+        }
+    }
 
 
-
+    //search btn click func
+    $('#search-btn').on('click', function (event) {
+        event.preventDefault();
+        let city = cityInput.val().trim();
+        city = city.replace(' ', '%20');
+        cityInput.val('');
+        if (city) {
+            let queryURL = buildURLFromInputs(city);
+            weatherSearch(queryURL);
+        }
+    });
+    //init process
+    loadCities();
+    displayCities(pastCities);
+    displaylastSearchedCity();
 });
 
-   
+//code finished
+//errors persist
+//api call issues
+
+//uncaught reference error ln 51 id is not defined
+//error occurs when searching
 
 
-// JavaScript TODOs
-// 1. Add functionality to all buttons
-// 3. set up search functionality
+//jquery error 'storeCities is not defined'

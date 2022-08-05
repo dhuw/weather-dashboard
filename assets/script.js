@@ -47,8 +47,15 @@ $(document).ready(function () {
     }
 
     function buildURLFromInputs(city) {
+        if (city) {
+          return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;  
+        }
+    }
+
+    function buildURLFromId(id) {
         return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;
     }
+
 
     //display last searched cities
     function displayCities(pastCities) {
@@ -56,12 +63,12 @@ $(document).ready(function () {
         pastCities.splice(5);
         let sortedCities = [...pastCities];
         sortedCities.sort(compare);
-        sortedCities.forEach(function (location {
+        sortedCities.forEach(function (location) {
             let cityDiv = $('<div>').addClass('col-12 city');
             let cityBtn = $('<button>').addClass('btn btn-light city-btn').text(location.city);
             cityDiv.append(cityBtn);
-            cityBtn.append(cityBtn);
-        }));
+            cityListEl.append(cityDiv);
+        });
     }
 
     // uv index color function
@@ -89,65 +96,64 @@ $(document).ready(function () {
             let id = response.id;
             //removing dupes
             if (pastCities[0]) {
-                pastCities = $.grep(pastCities, funtion (storedCity) {
+                pastCities = $.grep(pastCities, function (storedCity) {
                     return id !== storedCity.id;
                 })
             }
             pastCities.unshift({city, id});
             storeCities();
             displayCities(pastCities);
-        })
+        
+            //display weather in cards
+            cityEl.text(response.name);
+            let formattedDate = moment.unix(response.dt).format('L');
+            dateEl.text(formattedDate);
+            let weatherIcon = response.weather[0].icon;
+            weatherIconEl.attr('src', 'http://openweathermap.org/img/wn/${weatherIcon}.png').attr
+            ('alt', response.weather[0].description);
+            temperatureEl.html(((response.main.temp - 273.15) *1.8 + 32).toFixed(1));
+            humidityEl.text(response.main.humidity);
+            windEl.text((response.wind.speed * 2.237).toFixed(1));
+
+            let lat = reponse.coord.lat;
+            let lon = reponse.coord.lon;
+            let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+            $.ajax({
+                url: queryURLAll,
+                method: 'GET'
+            }).then(function (response) {
+                let uvIndex = response.current.uvi;
+                let uvColor = setIndexColor
+                uvIndexEl.text(response.current.uvi);
+                uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`)
+                let fivDay = response.daily;
+
+                //five day dom 
+                for (let i = 0; i <= 5; i++) {
+                    let currDay = fiveDay[i];
+                    $(`div.day-${i} .card-title`).text(moment.unix(currDay.dt).format('L'));
+                    $(`div.day-${i} .fiveDay-img`).attr(
+                        'src',
+                        `http://openweathermap.org/img/wn/${currDay.weather[0].icon}.png`
+                    ).attr('alt', currDay.weather[0].description);
+                    $(`div.day-${i} .fiveDay-temp`).text(((currDay.temp.day - 273.15) * 1.8 + 32).toFixed(1));
+                    $(`div.day-${i} .fiveDay-humid`).text(currDay.humidity);
+
+
+                }
+            });
+        });
     }
-    
-    //display weather in cards
-    cityEl.text(response.name);
-    let formattedDate = moment.unix(response.dt).format('L');
-    dateEl.text(formattedDate);
-    let weatherIcon = response.weather[0].icon;
-    weatherIconEl.attr('src', 'http://openweathermap.org/img/wn/${weatherIcon}.png').attr
-    ('alt', response.weather[0].description);
-    temperatureEl.html(((response.main.temp - 273.15) *1.8 + 32).toFixed(1));
-    humidityEl.text(response.main.humidity);
-    windEl.text((response.wind.speed * 2.237).toFixed(1));
 
-    let lat = reponse.coord.lat;
-    let lon = reponse.coord.lon;
-    let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-    $.ajax({
-        url: queryURLAll,
-        method: 'GET'
-    }).then(function (response) {
-        let uvIndex = response.current.uvi;
-        let uvColor = setIndexColor
-        uvIndexEl.text(response.current.uvi);
-        uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`)
-        let fivDay = response.daily;
-
-        //five day dom 
-        for (let 1 = 0; i <= 5; i++) {
-            let currDay = fiveDay[i];
-            $(`div.day-${i} .card-title`).text(moment.unix(currDay.dt).format('L'));
-            $(`div.day-${i} .card-title`).attr(
-                'src',
-                `http://openweathermap.org/img/wn/${currDay.weather[0].icon}.png`
-            ).attr('alt', currDay.weather[0].description);
-            $(`div.day-${i} .fiveDay-temp`)
+    //last searched city funbction
 
 
 
-        }
+});
 
-
-
-
-    })
-
-
-})
-
+   
 
 
 // JavaScript TODOs
 // 1. Add functionality to all buttons
 // 3. set up search functionality
-// 5. implement moment.js for #4

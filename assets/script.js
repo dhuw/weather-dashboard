@@ -79,9 +79,10 @@ $(document).ready(function () {
         } else if (uvi >= 6 && uvi < 8) {
             return 'orange';
         } else if (uvi >= 8 && uvi < 11) {
-            return 'red'
-        } else return 'purple'
+            return 'red';
+        } else return 'purple';
     }
+
 
     //openweather search
     function weatherSearch(queryURL) {

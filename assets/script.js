@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     function buildURLFromInputs(city) {
         if (city) {
-          return `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${apiKey}`;  
+            return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
         }
     }
 

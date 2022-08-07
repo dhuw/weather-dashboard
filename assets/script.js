@@ -121,7 +121,7 @@ $(document).ready(function () {
                 method: 'GET'
             }).then(function (response) {
                 let uvIndex = response.current.uvi;
-                let uvColor = setUVIndexColor(uvIndex);
+                let uvColor = setIndexColor(uvIndex);
                 uvIndexEl.text(response.current.uvi);
                 uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`);
                 let fiveDay = response.daily;
@@ -169,7 +169,7 @@ $(document).ready(function () {
     //init process
     loadCities();
     displayCities(pastCities);
-    displaylastSearchedCity();
+    displayLastSearchedCity();
 });
 
 //code finished

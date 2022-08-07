@@ -22,11 +22,10 @@ $(document).ready(function () {
     
     //function to sort cities
     function compare(a, b) {
-
         const cityA = a.city.toUpperCase();
         const cityB = b.city.toUpperCase();
-
         let comparison = 0;
+        
         if (cityA > cityB) {
             comparison = 1;
         } else if (cityA < cityB) {
@@ -42,7 +41,7 @@ $(document).ready(function () {
         }
     }
     //store pastCities into local
-    function storedCities() {
+    function storeCities() {
         localStorage.setItem('pastCities', JSON.stringify(pastCities));
     }
 

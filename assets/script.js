@@ -113,19 +113,19 @@ $(document).ready(function () {
             temperatureEl.html(((response.main.temp - 273.15) * 1.8 + 32).toFixed(1));
             humidityEl.text(response.main.humidity);
             windEl.text((response.wind.speed * 2.237).toFixed(1));
-
-            let lat = reponse.coord.lat;
-            let lon = reponse.coord.lon;
+            let lat = response.coord.lat;
+            let lon = response.coord.lon;
             let queryURLAll = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
             $.ajax({
                 url: queryURLAll,
                 method: 'GET'
             }).then(function (response) {
                 let uvIndex = response.current.uvi;
-                let uvColor = setIndexColor
+                let uvColor = setUVIndexColor(uvIndex);
                 uvIndexEl.text(response.current.uvi);
-                uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`)
-                let fivDay = response.daily;
+                uvIndexEl.attr('style', `background-color: ${uvColor}; color: ${uvColor === "yellow" ? "black" : "white"}`);
+                let fiveDay = response.daily;
+
 
                 //five day dom 
                 for (let i = 0; i <= 5; i++) {
@@ -137,21 +137,20 @@ $(document).ready(function () {
                     ).attr('alt', currDay.weather[0].description);
                     $(`div.day-${i} .fiveDay-temp`).text(((currDay.temp.day - 273.15) * 1.8 + 32).toFixed(1));
                     $(`div.day-${i} .fiveDay-humid`).text(currDay.humidity);
-
-
                 }
             });
         });
     }
 
     //last searched city funbction
-    function displaylastSearchedCity() {
+    function displayLastSearchedCity() {
         if (pastCities[0]) {
             let queryURL = buildURLFromId(pastCities[0].id);
-            weatherSearch(queryURL);
-        } else { // if no past cities seattle will be searched by default
-            let queryURL = buildURLFromInputs("Seattle");
-            weatherSearch(queryURL);
+            searchWeather(queryURL);
+        } else {
+            // if no past searched cities, load Detroit weather data
+            let queryURL = buildURLFromInputs("Detroit");
+            searchWeather(queryURL);
         }
     }
 

@@ -4,16 +4,19 @@ This weather dashboard app utilizes openweathermapAPI in order to pull weather d
 
 ## Links
 - Deployed Page:
-<br /> https://dhuw.github.io/homework-6/
+<br /> https://dhuw.github.io/weather-dashboard/
 - Repo:
-<br /> https://github.com/dhuw/homework-6
+<br /> https://github.com/dhuw/weather-dashboard
 
 ## Desktop Computer
-*screenshot of deployed page w/ full resolution*
+![desktopwd](https://user-images.githubusercontent.com/101857547/183310498-f75a3d4c-d41e-4ee4-b5a3-44782fdfa718.png)
+
 ## Tablet 
-*screenshot of deployed page w/ tablet resolution*
+![tabletwd](https://user-images.githubusercontent.com/101857547/183310505-316d40ff-23e1-4e44-872e-7bb0cc7233f2.png)
+
 ## Mobile
-*screenshot of deployed page w/ mobile resolution*
+![mobilewd](https://user-images.githubusercontent.com/101857547/183310509-09aca1e1-13bc-4c11-b9c9-ea843146b997.png)
+
 
 ## Resources Used
 - https://stackoverflow.com/
